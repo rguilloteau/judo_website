@@ -1,0 +1,13 @@
+<h1>Normandie Judo</h1>
+<h2>Bienvenue sur ce site non officiel listant les compétitions de la région Normandie</h2>
+
+{% for event in events %}
+    <div class="event">
+        <h3>{{ event.title }}</h3>
+        <p>{{ event.description|truncatewords_html:80 }}</p>
+        <p><a href="{% url 'read' id=event.id %}">Détails</a>
+    </div>
+
+{% empty %}
+    <p>Aucune compétition.</p>
+{% endfor %}
