@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
 <h1>{{ event.title }} <span class="small">dans {{ event.department.name }}</span></h1>
 <p class="infos">Organisé par {{ event.organizer }}, le {{event.date_beginning}} à {{event.location}}</p>
 <div class="description">{{ event.description|linebreaks }}</div>
+{% endblock %}
