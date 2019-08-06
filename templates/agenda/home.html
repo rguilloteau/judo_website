@@ -3,14 +3,24 @@
 <h1>Normandie Judo</h1>
 <h2>Bienvenue sur ce site non officiel listant les compétitions de la région Normandie</h2>
 
+<div class="list-group">
 {% for event in events %}
-    <div class="event">
-        <h3>{{ event.title }}</h3>
-        <p>{{ event.description|truncatewords_html:80 }}</p>
-        <p><a href="{% url 'read' id=event.id %}">Détails</a>
-    </div>
+<a href="{% url 'read' id=event.id %}" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{ event.title }}</h5>
+          {% if event.date_beginning == event.date_end %}
+          <small>le {{ event.date_beginning }}</small>
+          {% else %}
+          <small>du {{ event.date_beginning }} au {{ event.date_end }}</small>
+          {% endif %}
+        </div>
+        <p class="mb-1">{{ event.city }}</p>
+        <small>Organisé par {{ event.organizer }}</small>
+</a>
+
 
 {% empty %}
     <p>Aucune compétition.</p>
 {% endfor %}
+</div>
 {% endblock %}
