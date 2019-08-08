@@ -112,3 +112,4 @@ media/
 !**/migrations/__init__.py
 
 mail.py
+staticfiles/
