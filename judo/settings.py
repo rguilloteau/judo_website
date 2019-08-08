@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
-import os
+import os, django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 's!*ct=gkw1&dj1q)vks#48z9ok!$1sfv71s9ov-n#py6+e3zqc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["normandie-judo.heroku.com"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -122,12 +122,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-if DEBUG:
-    STATIC_URL = '/static/'
-else:
-    STATIC_URL = '/staticfiles/'
-STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, 'staticfiles'))
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = "/static/"
 
+django_heroku.settings(locals())
