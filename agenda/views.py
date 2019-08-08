@@ -9,4 +9,4 @@ def home(request):
 
 def read(request, id):
     event = get_object_or_404(Event, id=id)
-    return render(request, 'agenda/read.html', {'event':event})
+    return render(request, 'agenda/read.html', {'event':event, 'url' : event.get_url_maps()})

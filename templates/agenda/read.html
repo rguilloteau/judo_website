@@ -3,4 +3,11 @@
 <h1>{{ event.title }} <span class="small">dans {{ event.department.name }}</span></h1>
 <p class="infos">Organisé par {{ event.organizer }}, le {{event.date_beginning}} à {{event.location}}</p>
 <div class="description">{{ event.description|linebreaks }}</div>
+
+<div style="overflow:hidden;max-width:100%;width:300px;height:300px;">
+    <div id="gmapdisplay" style="height:100%; width:100%;max-width:100%;">
+        <iframe style="height:100%;width:100%;border:0;" frameborder="0" src={{ url }}></iframe>
+    </div>
+    <style>#gmapdisplay img.text-marker{max-width:none!important;background:none!important;}img{max-width:none}</style>
+</div>
 {% endblock %}
