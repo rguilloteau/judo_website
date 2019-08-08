@@ -8,7 +8,7 @@ def send_mail(dest, mail_sender, sender_passwd, subject, message):
 
     msg = MIMEMultipart()
     msg['From'] = mail_sender
-    msg['To'] = dest
+    msg['To'] = " ".join(dest)
     msg['Subject'] = subject
 
     msg.attach(MIMEText(message))
@@ -32,10 +32,12 @@ def contact(request):
         sender = form.cleaned_data['sender']
         send_back = form.cleaned_data['send_back']
 
+        dest = ["romain.guilloteau@outlook.com"]
+
         if send_back:
-            send_mail(sender, "normandie.judo@gmail.com", '=S/]/Q"6HHt6', subject, message)
+            dest.append(sender)
         
-        send_mail("romain.guilloteau@outlook.com", "normandie.judo@gmail.com", '=S/]/Q"6HHt6', subject, message)
+        send_mail(dest, "normandie.judo@gmail.com", '=S/]/Q"6HHt6', subject, message)
         envoi = True
     
     # Quoiqu'il arrive, on affiche la page du formulaire.
