@@ -4,30 +4,50 @@
 
 <div class="container">
     <div class="row">
-      <div class="col-sm-6">
-          <h3>{{event.title}}</h3>
-          <address>
-              Événement organisé par {{ event.organizer }}<br>
-              <img src="{% static 'images/calendar.svg' %}"> 
-              {% if event.date_beginning == event.date_end %}
-                {{ event.date_beginning }}
-                {% else %}
-               du {{ event.date_beginning }} au {{ event.date_end }}
-               {% endif %}
-              <br><br>
-
-              {{event.location}}<br>
-              {{event.address}}<br>
-              {{event.zipcode}} {{event.city}}<br>
-              <small>{{event.department}}</small>
-          </address>
-      </div>
-        <div style="overflow:hidden;max-width:100%;" class="col-sm-6">
-            <div id="gmapdisplay" style="height:100%; width:100%;max-width:100%;">
-                <iframe style="height:100%;width:90%;border:0;" frameborder="0" src={{ url }}></iframe>
+            <div class="col-sm-6">
+                
+                <div class="row event_title">
+                    <div class="col">
+                            <h3>{{event.title}}</h3>
+                            Événement organisé par {{ event.organizer }}
+                    </div>
+                </div>
+    
+                <div class="row event_date">  
+                        <div class="col-1">
+                                <img src="{% static 'images/calendar.svg' %}">
+                        </div>
+                        <div class="col-5">
+                                {% if event.date_beginning == event.date_end %}
+                                    {{ event.date_beginning }}
+                                {% else %}
+                                    du {{ event.date_beginning }} au {{ event.date_end }}
+                                {% endif %}
+                        </div>
+                </div>
+                <div class="row event_address">  
+                        <div class="col-1">
+                                <img height="25em" src="{% static 'images/location.png' %}"> 
+                        </div>
+                        <div class="col-auto">
+                            {{event.location}}<br>
+                            {{event.address}}<br>
+                            {{event.zipcode}} {{event.city}}<br>
+                            <small>{{event.department}}</small>
+                        </div>
+                </div>
+                <div class="row event_description">
+                    <div class="col">
+                            {{event.description | linebreaks }}
+                    </div>
+                </div>
             </div>
-            <style>#gmapdisplay img.text-marker{max-width:none!important;background:none!important;}img{max-width:none}</style>
-        </div>
-    </div>
+              <div style="overflow:hidden;max-width:100%;" class="col-sm-6">
+                  <div id="gmapdisplay" style="height:100%; width:100%;max-width:100%;">
+                      <iframe style="height:100%;width:90%;border:0;" frameborder="0" src={{ url }}></iframe>
+                  </div>
+                  <style>#gmapdisplay img.text-marker{max-width:none!important;background:none!important;}img{max-width:none}</style>
+              </div>
+          </div>
 </div>
 {% endblock %}

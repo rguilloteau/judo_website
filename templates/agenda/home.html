@@ -1,7 +1,21 @@
 {% extends "base.html" %}
+{%load static%}
 {% block content %}
-<h1>Normandie Judo</h1>
-<h2>Bienvenue sur ce site non officiel listant les compétitions de la région Normandie</h2>
+<div class="header" back>
+    <h1>Normandie Judo</h1>
+    <h2>Bienvenue sur ce site non officiel listant les compétitions de la région Normandie</h2>
+</div>
+
+<style>
+    .header
+    {
+   /*background-image:url("{% static 'images/judo2.jpg' %}"); */
+    background-repeat:no-repeat;
+    background-size: 100%;
+    background-position: top -20px
+    
+    }
+</style>
 
 <div class="list-group">
 {% for event in events %}
