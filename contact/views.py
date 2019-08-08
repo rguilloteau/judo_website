@@ -32,7 +32,7 @@ def contact(request):
         sender = form.cleaned_data['sender']
         send_back = form.cleaned_data['send_back']
 
-        dest = ["romain.guilloteau@outlook.com"]
+        dest = ["romain.guilloteau@telecom-paris.fr"]
 
         if send_back:
             dest.append(sender)
