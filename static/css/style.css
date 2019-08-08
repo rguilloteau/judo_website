@@ -1,0 +1,23 @@
+html, body {
+    height: 100%;
+  }
+
+.body{
+    min-height: 100%
+}
+
+
+.footer_page{
+    padding: 1em;
+    background-color: #f8f9fa;
+    position: relative;
+    margin-top: -3em; /* negative value of footer height */
+    height: 3em;
+    clear:both;
+}
+.container{
+    overflow:auto;
+    margin-top: 3em;
+    margin-bottom: 4em;
+
+}
