@@ -1,1 +1,0 @@
-web: gunicorn judo.wsgi --log-file -
